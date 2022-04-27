@@ -46,6 +46,7 @@ First,
 I thought and test some conditions below with regex function:
 * a-z lowercase and in sequence
 * A-Z uppercase and in sequence
+* 0-9 digits
 * special characters "!@#$%^&*()+-"
 * min 9 characters
 ```kotlin
@@ -65,7 +66,7 @@ I tried to encapsulate all the conditions from the business rules in 4 classes.
 * SpecialCase
 * UpperCase
 
-All validate it business rule and, if true, add a position in its case.
+Everyone validates their business rule and, if true, adds 1 in the case of the group.
 Example:
 ```kotlin
 override fun isValid(password: Password, value: Char) =
@@ -73,7 +74,7 @@ override fun isValid(password: Password, value: Char) =
 ```
 
 Finally,
-I validate that all business rules are ok.
+I validate that all groups have at least 1 each
 ```kotlin
 uppercase > 0 && lowercase > 0 && special > 0 && digit > 0
 ```
