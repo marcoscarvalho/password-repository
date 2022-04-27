@@ -65,7 +65,7 @@ I tried to encapsulate all the conditions from the business rules in 4 classes.
 * SpecialCase
 * UpperCase
 
-All validate your business rule and, if true, add a position in its case.
+All validate it business rule and, if true, add a position in its case.
 Example:
 ```kotlin
 override fun isValid(password: Password, value: Char) =
