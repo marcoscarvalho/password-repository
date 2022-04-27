@@ -6,5 +6,5 @@ class DigitCase : ValidCharStrategy {
     override fun isValid(value: Char): Boolean = value.toString().matches(Regex("[0-9]"))
 
     override fun isValid(password: Password, value: Char) =
-        value.toString().matches(Regex("[0-9]")).let { if (it) password.digit += 1 }
+        isValid(value).let { if (it) password.digit += 1 }
 }
