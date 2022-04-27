@@ -54,7 +54,7 @@ Pattern.matches("[a-zA-Z0-9!@#$%^&*()+-]{9,}", password)
 ```
 
 Second,
-I check if replacing a character to empty value modifies the string length. If a set have 2 characters in different positions, I will decrease length by 2 values.
+I check if replacing a character to empty value modifies the string length. Example: If a set has 2 characters in different positions, I will shorten the length by 2 values and break the validation below.
 ```kotlin
 password.password.length != password.password.replace(c.toString(), "").length + 1
 ```
