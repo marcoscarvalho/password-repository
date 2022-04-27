@@ -86,6 +86,12 @@ To confirm and with the need for some code refactoring, I needed to create unit 
 * PasswordServiceTest (unit test) 
 * PasswordValidatorIT (integration test)
 
+## Technologies
+I preferred make this test with Spring WebFlux + Coroutines + DSL. These are essential to allow the evolution of the code very easily. Main Layers:
+* Router: provides a concise and fluent way to define endpoints 
+* Handler: important classes for mapping HTTP code with requests to specific business rules
+* Service: main classes to business rules
+
 
 ## Installation
 
