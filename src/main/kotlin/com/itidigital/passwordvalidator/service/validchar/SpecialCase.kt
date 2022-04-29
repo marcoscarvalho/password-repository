@@ -1,7 +1,9 @@
 package com.itidigital.passwordvalidator.service.validchar
 
 import com.itidigital.passwordvalidator.model.Password
+import org.springframework.stereotype.Component
 
+@Component
 class SpecialCase : ValidCharStrategy {
     override fun isValid(value: Char): Boolean = value.toString().matches(Regex("[!@#$%^&*()+-]"))
 

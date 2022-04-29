@@ -2,6 +2,7 @@ package com.itidigital.passwordvalidator
 
 import com.itidigital.passwordvalidator.model.Password
 import com.itidigital.passwordvalidator.service.PasswordService
+import com.itidigital.passwordvalidator.service.validchar.*
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -15,7 +16,14 @@ class PasswordServiceTest {
 
     @Before
     fun setUp() {
-        passwordService = PasswordService()
+        passwordService = PasswordService(
+            listOfValidChar = listOf<ValidCharStrategy>(
+                DigitCase(),
+                LowerCase(),
+                SpecialCase(),
+                UpperCase()
+            )
+        )
     }
 
     @Test

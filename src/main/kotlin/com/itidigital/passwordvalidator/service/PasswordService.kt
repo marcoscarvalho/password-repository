@@ -1,19 +1,13 @@
 package com.itidigital.passwordvalidator.service
 
 import com.itidigital.passwordvalidator.model.Password
-import com.itidigital.passwordvalidator.service.validchar.DigitCase
-import com.itidigital.passwordvalidator.service.validchar.LowerCase
-import com.itidigital.passwordvalidator.service.validchar.SpecialCase
-import com.itidigital.passwordvalidator.service.validchar.UpperCase
+import com.itidigital.passwordvalidator.service.validchar.*
 import org.springframework.stereotype.Service
 
 @Service
-class PasswordService {
-
-    private val digitCase = DigitCase()
-    private val lowerCase = LowerCase()
-    private val specialCase = SpecialCase()
-    private val upperCase = UpperCase()
+class PasswordService(
+    private val listOfValidChar : List<ValidCharStrategy>
+) {
 
     fun checkIfPasswordIsValid(password: Password): Boolean {
         if (!password.checkFirstIfPatternMatches()) return false
@@ -25,10 +19,7 @@ class PasswordService {
                 return false
 
             // validates if there is a match and if there is, increments the requirement
-            digitCase.isValid(password, c)
-            lowerCase.isValid(password, c)
-            specialCase.isValid(password, c)
-            upperCase.isValid(password, c)
+            listOfValidChar.forEach{validChar -> validChar.isValid(password, c) }
         }
 
         return password.isMeetTheRequirements()
